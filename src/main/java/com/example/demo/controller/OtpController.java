@@ -17,7 +17,11 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth/otp")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://ai-powered-finance-tracker.netlify.app"
+})
 public class OtpController {
 
     private final OtpService otpService;
