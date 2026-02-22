@@ -171,10 +171,7 @@
 //}
 
 
-
 package com.example.demo.service;
-
-
 
 import com.example.demo.entity.Otp;
 import com.example.demo.repository.OtpRepository;
@@ -195,6 +192,7 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.Optional;
+
 @Service
 public class OtpService {
 
@@ -216,8 +214,8 @@ public class OtpService {
     }
 
     // ── Generate & Send OTP ────────────────────────────────────────────
-    public void sendOtp(String email, String purpose) {
-        if (!purpose.equals("LOGIN") && !purpose.equals("REGISTER")) {
+    public String sendOtp(String email, String purpose) {
+        if (!purpose.equals("LOGIN") && !purpose.equals("REGISTER") && !purpose.equals("TEST")) {
             throw new RuntimeException("Invalid OTP purpose");
         }
 
@@ -239,10 +237,12 @@ public class OtpService {
         otpRepository.save(otp);
 
         sendOtpEmail(email, otpCode, purpose);
+
+        return "OTP sent successfully to " + email;
     }
 
     // ── Verify OTP ─────────────────────────────────────────────────────
-    public boolean verifyOtp(String email, String otpCode, String purpose) {
+    public String verifyOtp(String email, String otpCode, String purpose) {
         Optional<Otp> otpOpt = otpRepository.findLatestValid(
             email, purpose, LocalDateTime.now()
         );
@@ -260,7 +260,7 @@ public class OtpService {
         otp.setUsed(true);
         otpRepository.save(otp);
 
-        return true;
+        return "OTP verified successfully";
     }
 
     // ── Generate random 6-digit OTP ────────────────────────────────────
