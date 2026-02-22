@@ -15,7 +15,11 @@ import com.example.demo.service.FinanceDashboardService;
 @RestController
 @RequestMapping("/api/dashboard")
 @PreAuthorize("hasRole('USER')")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://ai-powered-finance-tracker.netlify.app"
+})
 public class DashboardController {
 
     private final FinanceDashboardService dashboardService;
