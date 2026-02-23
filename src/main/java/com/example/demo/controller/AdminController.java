@@ -13,7 +13,11 @@ import com.example.demo.service.AdminUsersService;
 
 @RestController
 @RequestMapping("/api/admin/users")
-@CrossOrigin(origins = "http://localhost:3000")  // ✅ CORS should be before PreAuthorize
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://ai-powered-finance-tracker.netlify.app"
+}) // ✅ CORS should be before PreAuthorize
 public class AdminController {
 
     private final AdminUsersService usersService;
