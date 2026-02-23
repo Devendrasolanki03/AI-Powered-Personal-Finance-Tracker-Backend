@@ -1,75 +1,4 @@
-//
-//package com.example.demo.controller;
-//
-//import java.time.YearMonth;
-//import java.util.List;
-//import java.util.Map;
-//
-//
-//import org.springframework.web.bind.annotation.*;
-//
-//import com.example.demo.entity.Income;
-//import com.example.demo.service.ReportService;
-//
-//@RestController
-//@RequestMapping("/api/reports")
-//@CrossOrigin(origins = "http://localhost:3000")
-//public class ReportController {
-//
-//    private final ReportService reportService;
-//
-//    public ReportController(ReportService reportService) {
-//        this.reportService = reportService;
-//    }
-//
-//    // ================= MONTHLY =================
-//    @GetMapping("/monthly-income")
-//    public List<Income> getMonthlyIncome(
-//            @RequestParam String email,
-//            @RequestParam int year,
-//            @RequestParam int month) {
-//
-//        YearMonth ym = YearMonth.of(year, month);
-//        return reportService.getMonthlyIncome(email, ym);
-//    }
-//
-//    @GetMapping("/monthly-income-summary")
-//    public Map<String, Double> getMonthlyIncomeSummary(
-//            @RequestParam String email,
-//            @RequestParam int year,
-//            @RequestParam int month) {
-//
-//        YearMonth ym = YearMonth.of(year, month);
-//        return reportService.getMonthlyIncomeSummary(email, ym);
-//    }
-//
-//    // ================= YEARLY =================
-//    
-//    @GetMapping("/yearly-income")
-//    public List<Income> getYearlyIncome(
-//            @RequestParam String email,
-//            @RequestParam int year) {
-//
-//        return reportService.getYearlyIncome(email, year);
-//    }
-//
-//    @GetMapping("/yearly-income-summary")
-//    public Map<String, Double> getYearlyIncomeSummary(
-//            @RequestParam String email,
-//            @RequestParam int year) {
-//
-//        return reportService.getYearlyIncomeSummary(email, year);
-//    }
-//
-//    // ================= YEARLY MONTH-WISE CHART =================
-//    @GetMapping("/yearly-income-chart")
-//    public Map<String, Double> getYearlyIncomeChart(
-//            @RequestParam String email,
-//            @RequestParam int year) {
-//
-//        return reportService.getYearlyMonthlyIncomeChart(email, year);
-//    }
-//}
+
 
 package com.example.demo.controller;
 
@@ -86,7 +15,11 @@ import com.example.demo.service.ReportService;
 
 @RestController
 @RequestMapping("/api/reports")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://ai-powered-finance-tracker.netlify.app"
+})
 public class ReportController {
 
     private final ReportService reportService;
