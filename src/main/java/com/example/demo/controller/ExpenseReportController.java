@@ -15,7 +15,11 @@ import com.example.demo.service.ReportService;
 
 @RestController
 @RequestMapping("/api/expense-report")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://ai-powered-finance-tracker.netlify.app"
+})
 public class ExpenseReportController {
 
     private final ExpenseReportService expenseReportService;
