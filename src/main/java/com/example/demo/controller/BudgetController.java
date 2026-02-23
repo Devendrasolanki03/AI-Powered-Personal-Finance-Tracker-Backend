@@ -14,8 +14,11 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/budgets")
-@CrossOrigin(origins = "http://localhost:3000")
-public class BudgetController {
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://ai-powered-finance-tracker.netlify.app"
+})ller {
 
     private final BudgetService budgetService;
 
