@@ -15,7 +15,11 @@ import com.example.demo.service.FinanceService;
 
 @RestController
 @RequestMapping("/api/finance")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://ai-powered-finance-tracker.netlify.app"
+})
 public class FinanceController {
 
     private final FinanceService financeService;
