@@ -61,10 +61,5 @@ public class BudgetController {
         return "Budget deleted successfully";
     }
 
-    // ALERTS - Prevents 404 error from frontend
-    @PreAuthorize("hasRole('USER')")
-    @GetMapping("/alerts")
-    public List<?> getBudgetAlerts(@AuthenticationPrincipal String email) {
-        return new ArrayList<>();
-    }
+   
 }
