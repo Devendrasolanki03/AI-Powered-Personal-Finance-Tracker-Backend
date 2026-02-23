@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.service.AdminRevenueService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://ai-powered-finance-tracker.netlify.app"
+})
 @RestController
 @RequestMapping("/api/admin/revenue")
 @PreAuthorize("hasRole('ADMIN')")
