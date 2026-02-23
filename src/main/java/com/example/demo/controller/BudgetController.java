@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -63,12 +61,10 @@ public class BudgetController {
         return "Budget deleted successfully";
     }
 
-    // ALERTS - Returns empty list (frontend won't get 404 anymore)
+    // ALERTS - Prevents 404 error from frontend
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/alerts")
-    public List<Map<String, Object>> getBudgetAlerts(@AuthenticationPrincipal String email) {
-        // Returns empty list - no 404 error
-        // Implement full alert logic here later if needed
+    public List<?> getBudgetAlerts(@AuthenticationPrincipal String email) {
         return new ArrayList<>();
     }
 }
