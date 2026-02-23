@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,7 +21,8 @@ import jakarta.validation.Valid;
     "http://localhost:3000",
     "http://localhost:5173",
     "https://ai-powered-finance-tracker.netlify.app"
-})ller {
+})
+public class BudgetController {
 
     private final BudgetService budgetService;
 
@@ -57,5 +61,14 @@ import jakarta.validation.Valid;
                                @AuthenticationPrincipal String email) {
         budgetService.deleteBudget(budgetId, email);
         return "Budget deleted successfully";
+    }
+
+    // ALERTS - Returns empty list (frontend won't get 404 anymore)
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/alerts")
+    public List<Map<String, Object>> getBudgetAlerts(@AuthenticationPrincipal String email) {
+        // Returns empty list - no 404 error
+        // Implement full alert logic here later if needed
+        return new ArrayList<>();
     }
 }
