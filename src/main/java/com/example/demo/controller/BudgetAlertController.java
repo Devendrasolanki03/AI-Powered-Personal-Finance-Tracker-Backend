@@ -11,7 +11,11 @@ import com.example.demo.service.BudgetAlertService;
 
 @RestController
 @RequestMapping("/api/budgets/alerts")  // ✅ FIXED: changed from /budget-alerts to /budgets/alerts
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://ai-powered-finance-tracker.netlify.app"
+})
 public class BudgetAlertController {
 
     private final BudgetAlertService budgetAlertService;
